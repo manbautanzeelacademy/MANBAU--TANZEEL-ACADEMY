@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses - Manbau'-Tanzeel Academy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a5f7a;
+            --secondary: #159895;
+            --accent: #ffd700;
+            --light: #f8f9fa;
+            --dark: #2c3e50;
+            --text-light: #ffffff;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+        
+        /* Header Styles */
+        header {
+            background: rgba(26, 95, 122, 0.95);
+            backdrop-filter: blur(10px);
+            color: var(--text-light);
+            padding: 1rem 0;
+            box-shadow: 0 2px 30px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+        
+        header.scrolled {
+            padding: 0.5rem 0;
+            background: rgba(26, 95, 122, 0.98);
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .logo-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+        }
+        
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        
+        .motto {
+            font-size: 0.9rem;
+            font-style: italic;
+            opacity: 0.9;
+            letter-spacing: 0.5px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            position: relative;
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background: var(--accent);
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover:after,
+        .nav-links a.active:after {
+            width: 80%;
+            left: 10%;
+        }
+        
+        .nav-links a.portal-btn {
+            background: var(--accent);
+            color: var(--dark);
+            border-radius: 50px;
+            padding: 10px 25px;
+            font-weight: 600;
+        }
+        
+        .nav-links a.portal-btn:hover {
+            background: #ffed4a;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .courses-hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/courses-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--text-light);
+            text-align: center;
+            padding: 12rem 2rem;
+            margin-top: 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .courses-hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .courses-hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+            line-height: 1.2;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .courses-hero .motto {
+            font-size: 2.2rem;
+            color: var(--accent);
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+        
+        .courses-hero p {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--dark);
+            padding: 18px 45px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            background: #ffed4a;
+        }
+        
+        .cta-button.secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .cta-button.secondary:hover {
+            background: white;
+            color: var(--dark);
+        }
+        
+        /* Main Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            font-size: 2.8rem;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            margin-bottom: 4rem;
+            font-size: 1.3rem;
+            color: var(--secondary);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Course Categories */
+        .course-categories {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 4rem;
+            flex-wrap: wrap;
+        }
+        
+        .category-btn {
+            padding: 15px 30px;
+            background: white;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        
+        .category-btn.active,
+        .category-btn:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        
+        /* Courses Grid */
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 4rem;
+        }
+        
+        .course-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+        
+        .course-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--accent);
+            color: var(--dark);
+            padding: 8px 15px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            z-index: 2;
+        }
+        
+        .course-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .course-header:before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+        }
+        
+        .course-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .course-body {
+            padding: 2.5rem 2rem;
+        }
+        
+        .course-features {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+        
+        .course-features li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        
+        .course-features li:before {
+            content: "✓";
+            color: var(--success, #28a745);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .age-group {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--dark);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin: 0.5rem 0;
+        }
+        
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #eee;
+        }
+        
+        .course-price {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        .course-duration {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        /* Course Levels */
+        .levels-section {
+            background: #f0f7ff;
+            padding: 6rem 0;
+            margin: 4rem 0;
+        }
+        
+        .levels-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+        
+        .level-card {
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        .level-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+        
+        .level-icon {
+            font-size: 3.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .level-features {
+            list-style: none;
+            margin: 1.5rem 0;
+            text-align: left;
+        }
+        
+        .level-features li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        
+        .level-features li:before {
+            content: "•";
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        
+        /* Instructors Section */
+        .instructors-section {
+            padding: 6rem 0;
+        }
+        
+        .instructors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+        
+        .instructor-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+            transition: var(--transition);
+            text-align: center;
+        }
+        
+        .instructor-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+        
+        .instructor-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .instructor-info {
+            padding: 2rem;
+        }
+        
+        .instructor-name {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .instructor-subject {
+            color: var(--secondary);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        
+        .instructor-bio {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 6rem 0;
+        }
+        
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            margin-bottom: 1.5rem;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .faq-question {
+            padding: 1.5rem 2rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+        
+        .faq-answer {
+            padding: 0 2rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        
+        .faq-answer.active {
+            padding: 0 2rem 2rem;
+            max-height: 500px;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('images/cta-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            text-align: center;
+            padding: 8rem 2rem;
+        }
+        
+        .cta-section h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta-section p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: var(--text-light);
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+        
+        .footer-section h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            color: var(--text-light);
+            font-size: 1.5rem;
+            transition: var(--transition);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .social-links a:hover {
+            color: var(--accent);
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-3px);
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--primary);
+                flex-direction: column;
+                padding: 1rem 0;
+                box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .courses-hero h1 {
+                font-size: 3rem;
+            }
+            
+            .courses-hero .motto {
+                font-size: 1.8rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .courses-hero {
+                padding: 10rem 1.5rem;
+            }
+            
+            .courses-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .courses-hero .motto {
+                font-size: 1.5rem;
+            }
+            
+            .section-title {
+                font-size: 2.3rem;
+            }
+            
+            .container {
+                padding: 4rem 1.5rem;
+            }
+            
+            .courses-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .course-categories {
+                gap: 0.5rem;
+            }
+            
+            .category-btn {
+                padding: 12px 20px;
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .navbar {
+                padding: 0 1rem;
+            }
+            
+            .logo-text {
+                font-size: 1.4rem;
+            }
+            
+            .courses-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .courses-hero .motto {
+                font-size: 1.3rem;
+            }
+            
+            .course-meta {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <nav class="navbar">
+            <div class="logo-container">
+                <img src="Image/manbau.jpg" alt="Manbau'-Tanzeel Academy Logo" class="logo-img">
+                <div>
+                    <div class="logo-text">MANBAU'-TANZEEL ACADEMY</div>
+                    <div class="motto">EDUCATING THE MIND, PURIFYING THE SOUL</div>
+                </div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="courses.html" class="active">Courses</a></li>
+                <li><a href="admissions.html">Admissions</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="courses-hero">
+        <div class="courses-hero-content">
+            <h1>Our Academic Programs</h1>
+            <div class="motto">"EDUCATING THE MIND, PURIFYING THE SOUL"</div>
+            <p>Discover our comprehensive range of courses designed to nurture both intellectual growth and spiritual development</p>
+            <a href="admissions.html" class="cta-button">Enroll Today</a>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="container">
+        <h2 class="section-title">Explore Our Courses</h2>
+        <p class="section-subtitle">Choose from our diverse range of programs tailored to different age groups and learning objectives</p>
+        
+        <!-- Course Categories -->
+        <div class="course-categories">
+            <button class="category-btn active" data-category="all">All Courses</button>
+            <button class="category-btn" data-category="quranic">Quranic Studies</button>
+            <button class="category-btn" data-category="islamic">Islamic Sciences</button>
+            <button class="category-btn" data-category="academic">Academic Programs</button>
+            <button class="category-btn" data-category="language">Language Studies</button>
+            <button class="category-btn" data-category="specialized">Specialized Courses</button>
+        </div>
+
+        <!-- Courses Grid -->
+        <div class="courses-grid">
+            <!-- Quranic Studies Course -->
+            <div class="course-card" data-category="quranic">
+                <div class="course-badge">Most Popular</div>
+                <div class="course-header">
+                    <div class="course-icon"><i class="fas fa-book-quran"></i></div>
+                    <h3>Quran Fluency</h3>
+                    <div class="age-group">Ages 6+</div>
+                </div>
+                <div class="course-body">
+                    <p>Comprehensive Quran education including recitation, memorization, and understanding of the Holy Quran with proper Tajweed rules.</p>
+                    <ul class="course-features">
+                        <li>Quran Recitation (Tajweed)</li>
+                        <li>Hifz Program (Memorization)</li>
+                        <li>Tafsir (Quranic Explanation)</li>
+                        <li>Daily Revision Sessions</li>
+                        <li>Individual Attention & Progress Tracking</li>
+                    </ul>
+                    <div class="course-meta">
+                        <div>
+                            
+                            <div class="course-duration">5-month program</div>
+                        </div>
+                        <a href="admissions.html" class="cta-button" style="padding: 12px 25px;">Enroll Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Islamic Studies Course -->
+            <div class="course-card" data-category="islamic">
+                <div class="course-header">
+                    <div class="course-icon"><i class="fas fa-mosque"></i></div>
+                    <h3>Islamic Studies</h3>
+                    <div class="age-group">Ages 7+</div>
+                </div>
+                <div class="course-body">
+                    <p>Comprehensive Islamic education covering faith, worship, history, and moral development based on authentic sources.</p>
+                    <ul class="course-features">
+                        <li>Aqeedah (Islamic Creed)</li>
+                        <li>Fiqh (Islamic Jurisprudence)</li>
+                        <li>Seerah (Prophet's Biography)</li>
+                        <li>Islamic History</li>
+                        <li>Character Building & Ethics</li>
+                    </ul>
+                    <div class="course-meta">
+                        <div>
+                            <div class="course-duration">12-month program</div>
+                        </div>
+                        <a href="admissions.html" class="cta-button" style="padding: 12px 25px;">Enroll Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Arabic Language Course -->
+            <div class="course-card" data-category="language">
+                <div class="course-badge">New</div>
+                <div class="course-header">
+                    <div class="course-icon"><i class="fas fa-language"></i></div>
+                    <h3>Arabic Language</h3>
+                    <div class="age-group">Ages 10+</div>
+                </div>
+                <div class="course-body">
+                    <p>Master the Arabic language for Quran understanding and effective communication in modern contexts.</p>
+                    <ul class="course-features">
+                        <li>Modern Standard Arabic</li>
+                        <li>Classical Arabic for Quran</li>
+                        <li>Speaking & Conversation Practice</li>
+                        <li>Reading & Writing Skills</li>
+                        <li>Grammar & Vocabulary Building</li>
+                    </ul>
+                    <div class="course-meta">
+                        <div>
+                            <div class="course-duration">Flexible duration</div>
+                        </div>
+                        <a href="admissions.html" class="cta-button" style="padding: 12px 25px;">Enroll Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STEM Program -->
+            <div class="course-card" data-category="academic">
+                <div class="course-badge">New</div>
+                <div class="course-header">
+                    <div class="course-icon"><i class="fas fa-atom"></i></div>
+                    <h3>STEM Program</h3>
+                    <div class="age-group">Ages 10+</div>
+                </div>
+                <div class="course-body">
+                    <p>Science, Technology, Engineering, and Mathematics with Islamic perspective integration and ethical considerations.</p>
+                    <ul class="course-features">
+                        <li>Advanced Mathematics & Physics</li>
+                        <li>Computer Programming & Robotics</li>
+                        <li>Scientific Research Methods</li>
+                        <li>Engineering Principles</li>
+                        <li>Islamic Science History</li>
+                    </ul>
+                    <div class="course-meta">
+                        <div>
+                            
+                            <div class="course-duration">Flexible Duration</div>
+                        </div>
+                        <a href="admissions.html" class="cta-button" style="padding: 12px 25px;">Enroll Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Islamic Finance -->
+            <div class="course-card" data-category="specialized">
+                <div class="course-header">
+                    <div class="course-icon"><i class="fas fa-hand-holding-usd"></i></div>
+                    <h3>Islamic Finance</h3>
+                    <div class="age-group">Ages 16+</div>
+                </div>
+                <div class="course-body">
+                    <p>Understanding Islamic banking, finance principles, and halal investment strategies for modern economic challenges.</p>
+                    <ul class="course-features">
+                        <li>Principles of Islamic Finance</li>
+                        <li>Halal Investment Strategies</li>
+                        <li>Islamic Banking Operations</li>
+                        <li>Zakat & Inheritance Laws</li>
+                        <li>Business Ethics in Islam</li>
+                    </ul>
+                    <div class="course-meta">
+                        <div>
+                            <div class="course-duration">6-month program</div>
+                        </div>
+                        <a href="admissions.html" class="cta-button" style="padding: 12px 25px;">Enroll Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Early Childhood -->
+            <div class="course-card" data-category="academic">
+                <div class="course-header">
+                    <div class="course-icon"><i class="fas fa-child"></i></div>
+                    <h3>Early Childhood Program</h3>
+                    <div class="age-group">Ages 4-6</div>
+                </div>
+                <div class="course-body">
+                    <p>Foundational education with Islamic values for young learners, focusing on holistic development.</p>
+                    <ul class="course-features">
+                        <li>Basic Arabic Alphabet & Numbers</li>
+                        <li>Islamic Stories & Manners</li>
+                        <li>Basic Math & Reading Skills</li>
+                        <li>Creative Arts & Activities</li>
+                        <li>Social & Emotional Development</li>
+                    </ul>
+                    <div class="course-meta">
+                        <div>
+                            <div class="course-duration">9-month program</div>
+                        </div>
+                        <a href="admissions.html" class="cta-button" style="padding: 12px 25px;">Enroll Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 4rem;">
+            <h3>Can't find what you're looking for?</h3>
+            <p style="margin-bottom: 2rem;">Contact us for customized learning programs tailored to your needs</p>
+            <a href="contact.html" class="cta-button">Contact Academic Advisor</a>
+        </div>
+    </section>
+
+    <!-- Course Levels Section -->
+    <section class="levels-section">
+        <div class="container">
+            <h2 class="section-title">Course Levels & Progression</h2>
+            <p class="section-subtitle">Our structured learning path ensures continuous growth and development at every stage</p>
+            
+            <div class="levels-grid">
+                <div class="level-card">
+                    <div class="level-icon"><i class="fas fa-seedling"></i></div>
+                    <h3>Beginner Level</h3>
+                    <p>Foundational knowledge and basic skills development</p>
+                    <ul class="level-features">
+                        <li>Basic concepts introduction</li>
+                        <li>Fundamental skill building</li>
+                        <li>Structured learning path</li>
+                        <li>Regular assessment</li>
+                        <li>Personalized feedback</li>
+                    </ul>
+                </div>
+                
+                <div class="level-card">
+                    <div class="level-icon"><i class="fas fa-tree"></i></div>
+                    <h3>Intermediate Level</h3>
+                    <p>Advanced concepts and application-based learning</p>
+                    <ul class="level-features">
+                        <li>Complex topic exploration</li>
+                        <li>Practical application</li>
+                        <li>Critical thinking development</li>
+                        <li>Project-based learning</li>
+                        <li>Skill refinement</li>
+                    </ul>
+                </div>
+                
+                <div class="level-card">
+                    <div class="level-icon"><i class="fas fa-mountain"></i></div>
+                    <h3>Advanced Level</h3>
+                    <p>Mastery and specialized knowledge acquisition</p>
+                    <ul class="level-features">
+                        <li>Specialized topics</li>
+                        <li>Research opportunities</li>
+                        <li>Leadership development</li>
+                        <li>Mentorship programs</li>
+                        <li>Certification preparation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instructors Section -->
+    <section class="instructors-section">
+        <div class="container">
+            <h2 class="section-title">Meet Our Instructors</h2>
+            <p class="section-subtitle">Learn from qualified and experienced educators dedicated to your success</p>
+            
+            <div class="instructors-grid">
+                <div class="instructor-card">
+                    <img src="images/instructor1.jpg" alt="Dr. Ahmed Hassan" class="instructor-img">
+                    <div class="instructor-info">
+                        <h3 class="instructor-name">Dr. Ahmed Hassan</h3>
+                        <p class="instructor-subject">Quranic Studies & Tajweed</p>
+                        <p class="instructor-bio">With over 15 years of experience in Quranic education and Ijazah in multiple recitations, Dr. Hassan brings deep knowledge and passion to his teaching.</p>
+                    </div>
+                </div>
+                
+                <div class="instructor-card">
+                    <img src="images/instructor2.jpg" alt="Sr. Aisha Mohammed" class="instructor-img">
+                    <div class="instructor-info">
+                        <h3 class="instructor-name">Sr. Aisha Mohammed</h3>
+                        <p class="instructor-subject">Islamic Studies & History</p>
+                        <p class="instructor-bio">A graduate of Islamic University with specialization in Islamic history, Sr. Aisha makes learning engaging and relevant for modern students.</p>
+                    </div>
+                </div>
+                
+                <div class="instructor-card">
+                    <img src="images/instructor3.jpg" alt="Br. Yusuf Abdullah" class="instructor-img">
+                    <div class="instructor-info">
+                        <h3 class="instructor-name">Br. Yusuf Abdullah</h3>
+                        <p class="instructor-subject">Arabic Language & Linguistics</p>
+                        <p class="instructor-bio">Native Arabic speaker with MA in Arabic Linguistics, Br. Yusuf specializes in making Arabic accessible and enjoyable for non-native speakers.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Frequently Asked Questions</h2>
+            <p class="section-subtitle" style="color: rgba(255,255,255,0.8);">Find answers to common questions about our courses and programs</p>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What is the class schedule for courses?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Class schedules vary by course and student level. We offer flexible timing including weekday evenings, weekends, and online options to accommodate different schedules. Specific timetables are provided upon enrollment.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Are there any prerequisites for enrolling in courses?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Most beginner-level courses have no prerequisites. For intermediate and advanced courses, we conduct placement assessments to ensure students are appropriately placed for optimal learning.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do you offer financial aid or scholarships?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we offer limited financial assistance and sibling discounts for families in need. Please contact our admissions office to discuss available options and application procedures.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can I switch courses after enrollment?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Course transfers are possible within the first two weeks of the term, subject to availability and placement assessment. Please contact our academic advisors for assistance with course changes.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What materials are required for courses?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Required materials vary by course. Most courses include textbooks and materials in the course fee. Digital resources are provided through our student portal. Specific requirements are detailed in the course syllabus.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>Ready to Begin Your Learning Journey?</h2>
+        <p>Join hundreds of students who have transformed their lives through our comprehensive educational programs. Enroll today and take the first step toward academic excellence and spiritual growth.</p>
+        <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
+            <a href="admissions.html" class="cta-button">Apply Now</a>
+            <a href="contact.html" class="cta-button secondary">Schedule Consultation</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Manbau'-Tanzeel Academy</h3>
+                <p>"EDUCATING THE MIND, PURIFYING THE SOUL"</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/manbautanzeelacademy?igsh=cmNxdWR1N2pnMWxz"><i class="fab fa-instagram"></i></a>
+                    <a href="https://youtube.com/@engr_rhabs?si=oDPvJ7MwUjXjoULz"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Oloje Estate, ILorin</p>
+                <p><i class="fas fa-phone"></i> +234-9035334438</p>
+                <p><i class="fas fa-envelope"></i> manbautanzeelacademy@gmail.com</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <p><a href="admissions.html" style="color: white;">Admissions Process</a></p>
+                <p><a href="courses.html" style="color: white;">Course Catalog</a></p>
+                <p><a href="#calendar" style="color: white;">Academic Calendar</a></p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Newsletter</h3>
+                <p>Subscribe to receive updates and news from our academy</p>
+                <form style="margin-top: 1rem;">
+                    <input type="email" placeholder="Your email address" style="width: 100%; padding: 12px; border: none; border-radius: 5px; margin-bottom: 10px;">
+                    <button type="submit" class="cta-button" style="width: 100%; padding: 12px;">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2022 Manbau'-Tanzeel Academy. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Course category filtering
+        document.addEventListener('DOMContentLoaded', function() {
+            const categoryBtns = document.querySelectorAll('.category-btn');
+            const courseCards = document.querySelectorAll('.course-card');
+            
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    categoryBtns.forEach(b => b.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const category = this.getAttribute('data-category');
+                    
+                    // Show/hide courses based on category
+                    courseCards.forEach(card => {
+                        if (category === 'all' || card.getAttribute('data-category') === category) {
+                            card.style.display = 'block';
+                            setTimeout(() => {
+                                card.style.opacity = '1';
+                                card.style.transform = 'translateY(0)';
+                            }, 100);
+                        } else {
+                            card.style.opacity = '0';
+                            card.style.transform = 'translateY(20px)';
+                            setTimeout(() => {
+                                card.style.display = 'none';
+                            }, 300);
+                        }
+                    });
+                });
+            });
+        });
+
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const isActive = answer.classList.contains('active');
+                
+                // Close all other FAQs
+                document.querySelectorAll('.faq-answer').forEach(ans => {
+                    ans.classList.remove('active');
+                });
+                document.querySelectorAll('.faq-question i').forEach(icon => {
+                    icon.className = 'fas fa-chevron-down';
+                });
+                
+                // Toggle current FAQ
+                if (!isActive) {
+                    answer.classList.add('active');
+                    question.querySelector('i').className = 'fas fa-chevron-up';
+                }
+            });
+        });
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.course-card, .level-card, .instructor-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
