@@ -95,7 +95,9 @@
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 1rem; 
+            align-items: center; 
+            margin-right: 20px;
         }
         
         .nav-links a {
@@ -128,9 +130,10 @@
         .nav-links a.portal-btn {
             background: var(--accent);
             color: var(--dark);
-            border-radius: 50px;
-            padding: 10px 25px;
+            border-radius: 5px; /* Instead of the ribbon, a clean rounded box */
+            padding: 10px 20px;
             font-weight: 600;
+            white-space: nowrap; /* Prevents text from dropping to a second line */
         }
         
         .nav-links a.portal-btn:hover {
